@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SmartFin Transparent Loans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="flex justify-between align-center mb-4">
+        <div>
+            <h1>Welcome, <span id="userNameDisplay">User</span></h1>
+            <p>Here is your transparent borrowing dashboard.</p>
+        </div>
+        <button id="logoutBtn" class="btn" style="width: auto; background-color: var(--text-secondary);">Logout</button>
+    </header>
+
+    <div class="grid-2">
+        <!-- Loan Calculator Section -->
+        <div class="card">
+            <h2>Loan Calculator</h2>
+            <p>See exactly what you will pay before you apply. No hidden fees.</p>
+            
+            <div class="form-group mt-4">
+                <div class="flex justify-between">
+                    <label for="loanAmount">I want to borrow:</label>
+                    <span style="font-weight: 600;">₹<span id="loanAmountDisplay">50000</span></span>
+                </div>
+                <input type="range" id="loanAmount" min="10000" max="500000" step="5000" value="50000">
+            </div>
+
+            <div class="form-group">
+                <div class="flex justify-between">
+                    <label for="loanTenure">Over a period of:</label>
+                    <span style="font-weight: 600;"><span id="loanTenureDisplay">12</span> Months</span>
+                </div>
+                <input type="range" id="loanTenure" min="3" max="60" step="1" value="12">
+            </div>
+
+            <div class="form-group">
+                <label for="monthlyIncome">My monthly income is (₹):</label>
+                <input type="number" id="monthlyIncome" value="30000">
+                <p style="font-size: 0.75rem; margin-top: 0.25rem;">Used to assess if this loan is safe for you.</p>
+            </div>
+            
+            <!-- Hidden Fixed Interest Rate for simplicity -->
+            <input type="hidden" id="interestRate" value="12"> 
+
+            <button id="applyBtn" class="btn mt-2">Apply for this Loan</button>
+            <div id="applyMessage" class="mt-2 text-center" style="font-weight: 500;"></div>
+        </div>
+
+        <!-- Transparency Summary Section -->
+        <div>
+            <div class="card">
+                <h2>Your Clear Summary</h2>
+                <p>We believe in 100% transparency. This is what this loan means for you.</p>
+                
+                <div class="transparent-summary text-center">
+                    <p style="margin-bottom: 0;">You will pay</p>
+                    <div class="summary-value">₹<span id="emiResult">--</span></div>
+                    <p>every month</p>
+                    
+                    <div class="mt-4" style="border-top: 1px solid #E5E7EB; padding-top: 1rem;">
+                        <p style="margin-bottom: 0.5rem;">Total you will repay:</p>
+                        <div class="sub-value">₹<span id="totalPayableResult">--</span></div>
+                        <p style="font-size: 0.875rem; margin-top: 0.25rem;">(Includes ₹<span id="totalInterestResult">--</span> in interest)</p>
+                    </div>
+                </div>
+
+                <div id="riskIndicator" class="risk-badge risk-LOW">
+                    Analyzing Risk...
+                </div>
+                <p id="riskMessage" style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Checking if this EMI fits comfortably within your monthly budget.
+                </p>
+            </div>
+
+            <!-- Active Loans List -->
+            <div class="card mt-4">
+                <h2>Your Active Loans</h2>
+                <div id="activeLoansList">
+                    <p>Loading your loans...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

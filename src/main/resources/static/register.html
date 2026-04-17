@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SmartFin Transparent Loans</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%);
+        }
+        .login-card {
+            max-width: 400px;
+            width: 100%;
+            margin: 1rem;
+        }
+        .error-message {
+            color: var(--risk-high-text);
+            background-color: var(--risk-high-bg);
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="card login-card">
+        <div class="text-center mb-4">
+            <h1>Register</h1>
+            <p>Join SmartFin today.</p>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="monthlyIncome">Monthly Income (₹)</label>
+                <input type="number" id="monthlyIncome" value="30000" required>
+                <p style="font-size: 0.75rem; margin-top: 0.25rem;">Used for your personal risk assessment.</p>
+            </div>
+
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+        
+        <p class="text-center mt-4" style="font-size: 0.875rem;">
+            Already have an account? <a href="login.html" style="color: var(--primary-color); font-weight: 600;">Sign In</a>
+        </p>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
